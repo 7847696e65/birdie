@@ -4,9 +4,11 @@ const port = 3000
 
 app.use(express.static('public'))
 app.use('css', express.static(__dirname + 'public/css'))
-app.use('im', express.static(__dirname + 'public/im'))
+app.use('img', express.static(__dirname + 'public/img'))
 app.use('js', express.static(__dirname + 'public/js'))
 app.use('py', express.static(__dirname + 'public/py'))
+app.use('bgm', express.static(__dirname + 'public/bgm'))
+app.use('sfx', express.static(__dirname + 'public/sfx'))
 //app.use('test', express.static(__dirname + 'public/test'))
 
 app.set('views', './views')
@@ -55,8 +57,8 @@ connection.connect((err) => {
 
 app.get('/', (req, res) => {
 
-   res.set('Content-Type', 'text/html');
-   res.send(Buffer.from('<h2>Bebe time na ubos na. haha</h2>'));
+   //res.set('Content-Type', 'text/html');
+   //res.send(Buffer.from('<h2>Bebe time na ubos na. haha</h2>'));
 
   timeInMss = Date.now();
   key = crypto.randomBytes(32);

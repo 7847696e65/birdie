@@ -1,5 +1,13 @@
 game.GameOverScreen = me.ScreenObject.extend({
     init: function() {
+
+       
+        if(game.data.score > 20)
+        {
+
+        }
+        
+
         this.savedData = null;
         this.handler = null;
     },

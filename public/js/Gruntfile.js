@@ -2,11 +2,11 @@
 module.exports = function(grunt) {
     var sourceFiles = [
         'js/game.js',
-        'js/entities/entities.js',
-        'js/entities/HUD.js',
-        'js/screens/title.js',
-        'js/screens/play.js',
-        'js/screens/gameover.js',
+        'js/entities.js',
+        'js/HUD.js',
+        'js/title.js',
+        'js/play.js',
+        'js/gameover.js',
     ];
 
     // Project configuration.
@@ -18,7 +18,7 @@ module.exports = function(grunt) {
             },
             dist: {
                 files: {
-                    'build/clumsy-min.js': [
+                    'js/clumsy-min.js': [
                         sourceFiles
                     ]
                 }
@@ -55,7 +55,7 @@ module.exports = function(grunt) {
 
         clean: {
             dist: [
-                'build/clumsy-min.js'
+                'js/clumsy-min.js'
             ],
         },
 

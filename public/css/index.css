@@ -29,6 +29,7 @@ body {
   image-rendering: -webkit-optimize-contrast;
   image-rendering: optimize-contrast;
   -ms-interpolation-mode: nearest-neighbor;
+  
 }
 
 #share {
@@ -42,11 +43,11 @@ body {
 
 @font-face {
   font-family: 'gamefont';
-  src: url('data/css/gamefont.eot');
-  src: url('data/css/gamefont.eot?#iefix') format('embedded-opentype'),
-     url('data/css/gamefont.woff') format('woff'),
-     url('data/css/gamefont.ttf') format('truetype'),
-     url('data/css/gamefont.svg#gamefont') format('svg');
+  src: url('css/gamefont.eot');
+  src: url('css/gamefont.eot?#iefix') format('embedded-opentype'),
+     url('css/gamefont.woff') format('woff'),
+     url('css/gamefont.ttf') format('truetype'),
+     url('css/gamefont.svg#gamefont') format('svg');
   font-weight: normal;
   font-style: normal;
 }
