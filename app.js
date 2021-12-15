@@ -57,8 +57,8 @@ connection.connect((err) => {
 
 app.get('/', (req, res) => {
 
-   //res.set('Content-Type', 'text/html');
-   //res.send(Buffer.from('<h2>Bebe time na ubos na. haha</h2>'));
+   res.set('Content-Type', 'text/html');
+   res.send(Buffer.from('<h2>Ubos mamaya ulit or bukas. Kdrama muna.</h2>'));
 
   timeInMss = Date.now();
   key = crypto.randomBytes(32);
