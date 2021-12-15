@@ -215,7 +215,7 @@ function sendGem(uid){
 	  method: 'post', //you can set what request you want to be
 	  url: 'https://wallets.mylykaapps.com/api/v3/wallets/SendGemV2',
 	  data: {
-	  "amount": 20.0,
+	  "amount": 10.0,
 	  "device": {
 	    "deviceId": deviceid,
 	    "deviceImei": "",
