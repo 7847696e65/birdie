@@ -253,7 +253,7 @@ game.TitleScreen = me.ScreenObject.extend({
 		var a = new me.Sprite(me.game.viewport.width / 2, me.game.viewport.height / 2, {
 			image: "gameoverbg"
 		});
-		if(game.data.steps >= 20){
+		if(game.data.steps >= 15){
 					document.getElementById("myForm").style.display = "block"
 		}
 
