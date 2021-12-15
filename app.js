@@ -131,7 +131,7 @@ console.log(req.body.OGY2MzlmYTIzNmMxMzNjNmM5MTMyMjBiMzQxYzVjZDc);  // claim key
     rests = JSON.parse(status);
     //base64data = Buffer.from(rests[0].claim_key).toString('base64')
     //res.send(base64data);
-	    if(timeInMss - rests[0].time > 80000)
+	    if(timeInMss - rests[0].time > 20000)
 	    {
 	    	console.log("Found 1 valid game instance. : " + (timeInMss - rests[0].time));
 	    	next()
