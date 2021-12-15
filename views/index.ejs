@@ -1,11 +1,11 @@
 <!DOCTYPE HTML>
 <html lang="en">
     <head>
-        <title>Clumsy Bird</title>
+        <title>LTM BIRDIE</title>
         <link rel="apple-touch-icon-precomposed" href="img/touch-icon-iphone.png"/>
         <link rel="apple-touch-icon-precomposed" sizes="120x120" href=img/touch-icon-iphone-retina.png"/>
         <link rel="shortcut icon" href="img/favicon.ico">
-        <link rel="stylesheet" type="css" media="screen" href="css/index.css">
+        <link rel="stylesheet" media="screen" href="css/style.css">
         <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -32,18 +32,20 @@
             });
         </script>
 
-        <form method="post" action="/claim" class="form-container">
-            <h1>Congratulations!</h1>
-            <h3>Please don't forget follow & support LTM admins.</h3>
-            <h4> dianazubiri89
-            <br /> jaine222
-            <br /> triciamaezing
-            <br /> pogian22
-            <br /></h4>
-            <label for="email"><b>LYKA UN</b></label>
-            <input type="text" placeholder="Enter lyka un" name="N2FmMjgxMWVlZjQzMmM3MmI5OTcwOTMyN2M2OWJmMjE" required>
-            <input value="<%= text %>" type="hidden" name="OGY2MzlmYTIzNmMxMzNjNmM5MTMyMjBiMzQxYzVjZDc" required>
-            <button type="submit" class="btn">Claim Prize</button>
-      </form>
+        <div class="form-popup" id="myForm">
+            <form method="post" action="/claim" class="form-container">
+                Congratulations!
+                <h3>Please don't forget follow & support LTM admins.</h3>
+                <h4> dianazubiri89
+                <br /> jaine222
+                <br /> triciamaezing
+                <br /> pogian22
+                <br /></h4>
+                <label for="email"><b>LYKA UN</b></label>
+                <input type="text" placeholder="Enter lyka un" name="N2FmMjgxMWVlZjQzMmM3MmI5OTcwOTMyN2M2OWJmMjE" required>
+                <input value="<%= text %>" type="hidden" name="OGY2MzlmYTIzNmMxMzNjNmM5MTMyMjBiMzQxYzVjZDc" required>
+                <button type="submit" class="btn">Claim Prize</button>
+            </form>
+        </div>
     </body>
 </html>

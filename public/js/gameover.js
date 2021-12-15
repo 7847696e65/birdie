@@ -1,12 +1,7 @@
 game.GameOverScreen = me.ScreenObject.extend({
     init: function() {
 
-       
-        if(game.data.score > 20)
-        {
-
-        }
-        
+                     
 
         this.savedData = null;
         this.handler = null;
@@ -99,12 +94,16 @@ game.GameOverScreen = me.ScreenObject.extend({
                     me.game.viewport.width/2 - stepsText.width/2 - 60,
                     me.game.viewport.height/2 + 50
                 );
+
+               
             }
         }));
         me.game.world.addChild(this.dialog, 12);
     },
 
     onDestroyEvent: function() {
+     
+       
         // unregister the event
         me.event.unsubscribe(this.handler);
         me.input.unbindKey(me.input.KEY.ENTER);

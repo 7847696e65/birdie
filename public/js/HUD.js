@@ -30,6 +30,7 @@ game.HUD.ScoreItem = me.Renderable.extend({
 
         // make sure we use screen coordinates
         this.floating = true;
+         
     },
 
     draw: function (renderer) {

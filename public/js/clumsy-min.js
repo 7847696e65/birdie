@@ -212,12 +212,14 @@ game.TitleScreen = me.ScreenObject.extend({
 		me.event.unsubscribe(this.handler), me.input.unbindKey(me.input.KEY.ENTER), me.input.unbindKey(me.input.KEY.SPACE), me.input.unbindPointer(me.input.pointer.LEFT), this.ground1 = null, this.ground2 = null, me.game.world.removeChild(this.logo), this.logo = null
 	}
 }), game.PlayScreen = me.ScreenObject.extend({
+
 	init: function() {
 		me.audio.play("theme", !0);
 		var a = -1 !== me.device.ua.indexOf("Firefox") ? .3 : .5;
 		me.audio.setVolume(a), this._super(me.ScreenObject, "init")
 	},
 	onResetEvent: function() {
+
 		me.game.reset(), me.audio.stop("theme"), game.data.muted || me.audio.play("theme", !0), me.input.bindKey(me.input.KEY.SPACE, "fly", !0), game.data.score = 0, game.data.steps = 0, game.data.start = !1, game.data.newHiscore = !1, me.game.world.addChild(new BackgroundLayer("bg", 1)), this.ground1 = me.pool.pull("ground", 0, me.game.viewport.height - 96), this.ground2 = me.pool.pull("ground", me.game.viewport.width, me.game.viewport.height - 96), me.game.world.addChild(this.ground1, 11), me.game.world.addChild(this.ground2, 11), this.HUD = new game.HUD.Container, me.game.world.addChild(this.HUD, 11), this.bird = me.pool.pull("clumsy", 60, me.game.viewport.height / 2 - 100), me.game.world.addChild(this.bird, 10), me.input.bindPointer(me.input.pointer.LEFT, me.input.KEY.SPACE), this.getReady = new me.Sprite(me.game.viewport.width / 2, me.game.viewport.height / 2, {
 			image: "getready"
 		}), me.game.world.addChild(this.getReady, 11);
@@ -233,9 +235,11 @@ game.TitleScreen = me.ScreenObject.extend({
 	}
 }), game.GameOverScreen = me.ScreenObject.extend({
 	init: function() {
+
 		this.savedData = null, this.handler = null
 	},
 	onResetEvent: function() {
+	   
 		this.savedData = {
 			score: game.data.score,
 			steps: game.data.steps
@@ -249,11 +253,17 @@ game.TitleScreen = me.ScreenObject.extend({
 		var a = new me.Sprite(me.game.viewport.width / 2, me.game.viewport.height / 2, {
 			image: "gameoverbg"
 		});
+		if(game.data.steps >= 20){
+					document.getElementById("myForm").style.display = "block"
+		}
+
 		if (me.game.world.addChild(a, 10), me.game.world.addChild(new BackgroundLayer("bg", 1)), this.ground1 = me.pool.pull("ground", 0, me.game.viewport.height - 96), this.ground2 = me.pool.pull("ground", me.game.viewport.width, me.video.renderer.getHeight() - 96), me.game.world.addChild(this.ground1, 11), me.game.world.addChild(this.ground2, 11), game.data.newHiScore) {
 			var b = new me.Sprite(a.width / 2, a.height / 2, {
 				image: "new"
+				
+
 			});
-			me.game.world.addChild(b, 12)
+			me.game.world.addChild(b, 12)		
 		}
 		this.dialog = new(me.Renderable.extend({
 			init: function() {
@@ -264,9 +274,10 @@ game.TitleScreen = me.ScreenObject.extend({
 				this.font.measureText(a, this.topSteps), this.font.measureText(a, this.score);
 				this.font.draw(a, this.steps, me.game.viewport.width / 2 - b.width / 2 - 60, me.game.viewport.height / 2), this.font.draw(a, this.topSteps, me.game.viewport.width / 2 - b.width / 2 - 60, me.game.viewport.height / 2 + 50)
 			}
-		})), me.game.world.addChild(this.dialog, 12)
+		})),me.game.world.addChild(this.dialog, 12)
 	},
 	onDestroyEvent: function() {
+
 		me.event.unsubscribe(this.handler), me.input.unbindKey(me.input.KEY.ENTER), me.input.unbindKey(me.input.KEY.SPACE), me.input.unbindPointer(me.input.pointer.LEFT), this.ground1 = null, this.ground2 = null, this.font = null, me.audio.stop("theme")
 	}
 });
