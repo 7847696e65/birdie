@@ -35,6 +35,11 @@ var sendgemto_un;
 //Buffer.from(base64data, 'base64').toString('ascii')
 
 
+var sendgemto_un;
+//decode base64
+//Buffer.from(base64data, 'base64').toString('ascii')
+
+
 const btoken = "eyJhbGciOiJSUzI1NiIsImtpZCI6IjNjYmMyMTA1NGY0MDczYThjNzRmMTFiYzQ5ZmM0OTMxIiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE2Mzk0NDM1MzgsImV4cCI6MTY0MDczOTUzOCwiaXNzIjoiaHR0cHM6Ly9pZGVudGl0eS5teWx5a2FhcHBzLmNvbSIsImF1ZCI6ImFwaTEiLCJjbGllbnRfaWQiOiJyby5jbGllbnQiLCJzdWIiOiJkNDFlMzE1NS0wZWRlLTRmMjYtOTc1Ny0xYzQxNDliYWE5NDAiLCJhdXRoX3RpbWUiOjE2Mzk0NDM1MzgsImlkcCI6ImxvY2FsIiwibmFtZSI6ImRpYW5henViaXJpODkiLCJ1c2VybmFtZSI6ImRpYW5henViaXJpODkiLCJpZCI6IjcwMDAwMzEyMDUxMiIsImp0aSI6Imd3WlNDSl9PWVlxd0ZwVUNLZjQyZkEiLCJzY29wZSI6WyJhcGkxIiwib2ZmbGluZV9hY2Nlc3MiXSwiYW1yIjpbInB3ZCJdfQ.ddT3UOPgow0KjJARxbf_3LXYDFf55cbYapquHVwYv1U2z-Th6K2I9mcoyv96EZuiRQGLB2Q3OgCxUUvbJNjt0pyBmhr9AyjsR_VrGCJNSpSOoRQZhF6g-O6pNd2f6fLOo4v7qOPaII78eVnbwHEiyvAqWMXgHpPbZLhbXAz1Jd-VkXZV5JcGcDRkPDjhqxJCvgcKDqhtY32DHpO_Mwr4iA7ugicz5-Zxs1h75rAV46aoXR6jVAFlOmHieuKbVYDgzIsjN1GlXSPBwK6bZ7PGey9SXo4yWRNOuMjqUewH0-7xEfZY_ittI9Dr0hK73D3kjmhfLeXKFGJynpSiTaKSbw";
 const deviceid = "e3e1cfge1k5ne13d";
 var sendinggems = 1;
@@ -53,6 +58,69 @@ connection.connect((err) => {
   }
   console.log('Connection established');
 });
+/* Trigger Every 5 seconds for 15seconds
+function doSetTimeout(i) {
+  setTimeout(function() { alert(i); }, 5000*i);
+}
+
+for (var i = 1; i <= 3; ++i){
+  doSetTimeout(i);
+}*/
+
+//demo();
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function demo() {
+var step = 0;
+
+  /*
+  console.log('Taking a break...');
+  await sleep(2000);
+  console.log('Two seconds later, showing sleep in a loop...');
+ */
+  // Sleep in loop
+  //for (let i = 0; i < 5; i++) {
+while (sendinggems == 1){
+    await sleep(10000)
+    if (step == 0){ 
+      taskCompleted() 
+      //step = 1;
+    }
+    /*
+    else if (step == 1){ 
+      bulbul() 
+      step = 0;
+    }*/
+
+  }
+}
+
+async function taskCompleted (){
+      //console.log('potakah');
+      var rests;
+      connection.query("SELECT lykaun FROM tbl_game_instance WHERE status=2", function (err, result) {
+      if (err) throw err;
+      if (!isEmpty(result)){
+      console.log(JSON.stringify(result));
+      var lykaun = JSON.stringify(result);
+      rests = JSON.parse(lykaun); 
+      sendgemto_un = rests[0].lykaun.toString();
+      checkUser(rests[0].lykaun.toString()) 
+      //base64data = Buffer.from(rests[0].claim_key).toString('base64')
+      //res.send(base64data);
+      console.log("Sending gem to user : " + rests[0].lykaun)    
+      }
+      else
+      {
+        console.log("No user found to send gems.");
+      }  
+     })
+} 
+async function bulbul(shet){
+      console.log('shet ka');
+}   
 
 
 app.get('/', (req, res) => {
@@ -251,9 +319,25 @@ function checkUser(){
       console.log(sendgemto_un + " uid: " + lykauserinfo.data.id)
       sendGem(lykauserinfo.data.id) 
       }
-      catch{
-       console.log("Fail to retrieve id : " + sendgemto_un)
-       res.Send('Ay sh*t nag error haup.')
+      catch{      
+          connection.query("UPDATE tbl_game_instance SET lykaun='" + sendgemto_un +"', status = 3 WHERE status = 4", function (err, result) {
+          if (err) throw err;
+          if (!isEmpty(result)){
+          console.log(JSON.stringify(result));
+          var lykaun = JSON.stringify(result);
+          rests = JSON.parse(lykaun);    
+          //checkUser(rests) 
+          //base64data = Buffer.from(rests[0].claim_key).toString('base64')
+          //res.send(base64data);
+          console.log("Sending gem to user : " + sendgemto_un)    
+          }
+          else
+          {
+          console.log("No to send gems to.");
+          }  
+         })
+        console.log("Fail to retrieve id : " + sendgemto_un)
+         res.Send('Ay sh*t nag error haup.')
       }     
    }).then(function (){
        console.log()
