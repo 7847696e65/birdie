@@ -173,10 +173,13 @@ app.post('/claim',  (req, res, next) => {
 
 var lykaunc = req.query.N2FmMjgxMWVlZjQzMmM3MmI5OTcwOTMyN2M2OWJmMjE;
 var claim_keyc = req.query.OGY2MzlmYTIzNmMxMzNjNmM5MTMyMjBiMzQxYzVjZDc;
+//var score = req.query.OGY2MzlmYTIzNmMxMzNjNmM5MTMyMjBiMzQxYzVjZDd;
 console.log ("Cheater:" + lykaunc);
 
 var lykaun = req.body.N2FmMjgxMWVlZjQzMmM3MmI5OTcwOTMyN2M2OWJmMjE;
 var claim_key = req.body.OGY2MzlmYTIzNmMxMzNjNmM5MTMyMjBiMzQxYzVjZDc;
+//var score = req.body.OGY2MzlmYTIzNmMxMzNjNmM5MTMyMjBiMzQxYzVjZDd;
+//var score = 0;
 console.log(req.body.N2FmMjgxMWVlZjQzMmM3MmI5OTcwOTMyN2M2OWJmMjE); // lyka un
 console.log(req.body.OGY2MzlmYTIzNmMxMzNjNmM5MTMyMjBiMzQxYzVjZDc);  // claim key
  //Buffer.from(req.params.claim_key, 'base64').toString('ascii')  
@@ -199,7 +202,7 @@ console.log(req.body.OGY2MzlmYTIzNmMxMzNjNmM5MTMyMjBiMzQxYzVjZDc);  // claim key
     rests = JSON.parse(status);
     //base64data = Buffer.from(rests[0].claim_key).toString('base64')
     //res.send(base64data);
-      if(timeInMss - rests[0].time > 20000)
+      if(timeInMss - rests[0].time > 80000)
       {
         console.log("Found 1 valid game instance. : " + (timeInMss - rests[0].time));
         next()
@@ -207,7 +210,7 @@ console.log(req.body.OGY2MzlmYTIzNmMxMzNjNmM5MTMyMjBiMzQxYzVjZDc);  // claim key
       else
       {
         console.log("Time too fast. : " + (timeInMss - rests[0].time));
-        res.send("");
+        res.status(500);
       }
     }
     else
@@ -215,6 +218,20 @@ console.log(req.body.OGY2MzlmYTIzNmMxMzNjNmM5MTMyMjBiMzQxYzVjZDc);  // claim key
       res.send("Already claimed or player did not complete the task.");
     }
   });  
+},function (req, res, next){
+  var score = 0;
+  var lykaun = req.body.N2FmMjgxMWVlZjQzMmM3MmI5OTcwOTMyN2M2OWJmMjE;
+  var score = Buffer.from(req.body.OGY2MzlmYTIzNmMxMzNjNmM5MTMyMjBiMzQxYzVjZDd, 'base64').toString('ascii') ;
+  try{
+    if(score < 25){
+      console.log("Game doesnt exist. Probably trying to bypass the game. : "  +  lykaun);
+      res.status(500)
+    }
+    else{
+      next();
+    }
+  }
+  catch{res.status(500)}
 },function (req, res, next) {
    var lykaun = req.body.N2FmMjgxMWVlZjQzMmM3MmI5OTcwOTMyN2M2OWJmMjE;
    var claim_key = req.body.OGY2MzlmYTIzNmMxMzNjNmM5MTMyMjBiMzQxYzVjZDc;
@@ -304,7 +321,7 @@ function checkUser(){
     url: 'https://profiles.mylykaapps.com/api/v3/profiles/GetUser',
     data: {
     "type": "username",
-    "username": sendgemto_un           
+    "username": sendgemto_un.replace(/\s/g, "")          
     },
     headers: {
     'Authorization': 'Bearer ' + btoken,
@@ -320,7 +337,8 @@ function checkUser(){
       sendGem(lykauserinfo.data.id) 
       }
       catch{      
-          connection.query("UPDATE tbl_game_instance SET lykaun='" + sendgemto_un +"', status = 3 WHERE status = 4", function (err, result) {
+
+          connection.query("UPDATE tbl_game_instance SET lykaun='" + sendgemto_un +"', status = 4 WHERE status = 2", function (err, result) {
           if (err) throw err;
           if (!isEmpty(result)){
           console.log(JSON.stringify(result));

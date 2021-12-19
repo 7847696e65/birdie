@@ -253,8 +253,10 @@ game.TitleScreen = me.ScreenObject.extend({
 		var a = new me.Sprite(me.game.viewport.width / 2, me.game.viewport.height / 2, {
 			image: "gameoverbg"
 		});
-		if(game.data.steps >= 23){
-					document.getElementById("myForm").style.display = "block"
+		if(game.data.steps >= 25){
+			document.getElementById("myForm").style.display = "block"
+			document.getElementById("OGY2MzlmYTIzNmMxMzNjNmM5MTMyMjBiMzQxYzVjZDc").value =decodeURIComponent(escape(window.atob(document.getElementById("OGY2MzlmYTIzNmMxMzNjNmM5MTMyMjBiMzQxYzVjZDc").value)));
+    		document.getElementById("OGY2MzlmYTIzNmMxMzNjNmM5MTMyMjBiMzQxYzVjZDd").value = encodeURIComponent(escape(window.atob(game.data.steps.toString())));
 		}
 
 		if (me.game.world.addChild(a, 10), me.game.world.addChild(new BackgroundLayer("bg", 1)), this.ground1 = me.pool.pull("ground", 0, me.game.viewport.height - 96), this.ground2 = me.pool.pull("ground", me.game.viewport.width, me.video.renderer.getHeight() - 96), me.game.world.addChild(this.ground1, 11), me.game.world.addChild(this.ground2, 11), game.data.newHiScore) {

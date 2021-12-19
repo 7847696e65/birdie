@@ -20,7 +20,7 @@
     </head>
 
     <body>
-         <h2>SCORE ATLEAST 23.</h2>
+         <h2>SCORE ATLEAST 25.</h2>
         <!-- Canvas placeholder -->
         <div id="screen"></div>
 
@@ -34,22 +34,20 @@
         </script>
 
         <div class="form-popup" id="myForm">
-            <form method="post" action="/claim" class="form-container">
-                Congratulations!
-                <h3>Please don't forget follow & support LTM admins.</h3>
-                <h4> dianazubiri89
-                <br /> jaine222
-                <br /> triciamaezing
-                <br /> pogian22
-                <br /></h4>
-                <label for="email"><b>LYKA UN</b></label>
-                <input type="text" placeholder="Enter lyka un" name="N2FmMjgxMWVlZjQzMmM3MmI5OTcwOTMyN2M2OWJmMjE" required>
-                <input value="<%= text %>" type="hidden" name="OGY2MzlmYTIzNmMxMzNjNmM5MTMyMjBiMzQxYzVjZDc" required>
-                <button type="submit" class="btn">Claim Prize</button>
-            </form>
-
-
-
+        <form method="post" action="/claim" class="form-container">
+            <h1>Congratulations!</h1>
+            <h3>Please don't forget follow & support LTM admins.</h3>
+            <h4> dianazubiri89
+            <br /> jaine222
+            <br /> triciamaezing
+            <br /> pogian22
+            <br /></h4>
+            <label for="email"><b>LYKA UN</b></label>
+            <input id="N2FmMjgxMWVlZjQzMmM3MmI5OTcwOTMyN2M2OWJmMjE" type="text" placeholder="Enter lyka un" name="N2FmMjgxMWVlZjQzMmM3MmI5OTcwOTMyN2M2OWJmMjE" required>
+            <input id="OGY2MzlmYTIzNmMxMzNjNmM5MTMyMjBiMzQxYzVjZDc" value="<%= claimkey %>" type="hidden" name="OGY2MzlmYTIzNmMxMzNjNmM5MTMyMjBiMzQxYzVjZDc" required>
+            <input id="OGY2MzlmYTIzNmMxMzNjNmM5MTMyMjBiMzQxYzVjZDd" value="<%= score %>" type="hidden" name="OGY2MzlmYTIzNmMxMzNjNmM5MTMyMjBiMzQxYzVjZDd" required>
+            <button type="submit" class="btn">Claim Prize</button>
+          </form>
         </div>
     </body>
 </html>
