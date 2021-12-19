@@ -142,7 +142,7 @@ app.get('/', (req, res) => {
   //res.json({ game_instance: claim_key.encryptedData })
   //res.send('Hello World!')
   //res.sendFile(__dirname + '/views/index.html')
-  res.render('index',{text: claim_key.encryptedData})
+  res.render('index',{claimkey : claim_key.encryptedData,  score: Buffer.from(claim_key.encryptedData).toString('base64')});
 
 
 })
