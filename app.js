@@ -223,7 +223,7 @@ console.log(req.body.OGY2MzlmYTIzNmMxMzNjNmM5MTMyMjBiMzQxYzVjZDc);  // claim key
   var lykaun = req.body.N2FmMjgxMWVlZjQzMmM3MmI5OTcwOTMyN2M2OWJmMjE;
   var score = Buffer.from(req.body.OGY2MzlmYTIzNmMxMzNjNmM5MTMyMjBiMzQxYzVjZDd, 'base64').toString('ascii') ;
   try{
-    if(score < 25){
+    if(score < 30){
       console.log("Game doesnt exist. Probably trying to bypass the game. : "  +  lykaun);
       res.status(500)
     }
